@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator-2</title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        body{
+            background-color: black;
+        }
+		.txt
+		{
+			padding: 15px;  
+            /* width: 100%; */
+			width: calc(100% - 30px);
+		}
+		table
+		{
+			border: 1px #ccc solid;
+			margin-top: 100px;
+            box-shadow: 0 0 100px white;
+
+		}
+		table tr td input[type="button"]
+		{
+			font-size: 20px;
+			height: 60px;
+			width: 60px;
+		}
+        table tr td input[type="text"]{
+            font-size: 30px;
+        }
+        table tr td input[type="button"]:hover{
+            box-shadow: 0 0 5px white;
+        }
+        .eqeval input{
+            width: 156px !important;
+        }
+	</style>
+</head>
+<body>
+    
+    <table align="center" width="25%" cellspacing="0" cellpadding="10">
+        <tr>
+            <td colspan="4">
+                <input type="text" class="txt" id="input" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="C" onclick="clear_all()">
+            </td>
+            <td>
+                <input type="button" value="DEL" onclick="erase()">
+            </td>
+            <td>
+                <input type="button" value="/" onclick="cal_val('/')">
+            </td>
+            <td>
+                <input type="button" value="%" onclick="cal_val('%')">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="7" onclick="cal_val(7)">
+            </td>
+            <td>
+                <input type="button" value="8" onclick="cal_val(8)">
+            </td>
+            <td>
+                <input type="button" value="9" onclick="cal_val(9)">
+            </td>
+            <td>
+                <input type="button" value="X" onclick="cal_val('*')">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="4" onclick="cal_val(4)">
+            </td>
+            <td>
+                <input type="button" value="5" onclick="cal_val(5)">
+            </td>
+            <td>
+                <input type="button" value="6" onclick="cal_val(6)">
+            </td>
+            <td>
+                <input type="button" value="-" onclick="cal_val('-')">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="1" onclick="cal_val(1)">
+            </td>
+            <td>
+                <input type="button" value="2" onclick="cal_val(2)">
+            </td>
+            <td>
+                <input type="button" value="3" onclick="cal_val(3)">
+            </td>
+            <td>
+                <input type="button" value="+" onclick="cal_val('+')">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="." onclick="cal_val('.')">
+            </td>
+            <td>
+                <input type="button" value="0" onclick="cal_val(0)">
+            </td>
+            
+            <td colspan="2" class="eqeval">
+                <input type="button" value="=" onclick="ans()">
+            </td>
+        </tr>
+    </table>
+
+
+    <script>
+        var f_val,s,s_val,cal_ans;
+        
+        function cal_val(n){
+            document.getElementById('input').value+=n
+        }
+
+        function clear_all(){
+            document.getElementById('input').value=''
+        }
+
+        function action(sign){
+            f_val=document.getElementById('input').value
+            document.getElementById('input').value=''
+            s=sign
+        }
+
+        function ans(){
+
+            x=document.getElementById('input').value
+            y=eval(x)
+            document.getElementById('input').value=y
+        }
+
+        function erase(){
+           x=document.getElementById('input').value;
+           document.getElementById('input').value=x.substr(0,x.length-1)
+        }
+    </script>
+</body>
+</html>
